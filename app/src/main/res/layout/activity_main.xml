@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.hgc.databindingdemo.modle.User" />
+        <import type="com.hgc.databindingdemo.modle.Goods" />
+        <import type="com.hgc.databindingdemo.MainActivity.GoodsHandler" />
+        <import type="com.hgc.databindingdemo.MainActivity.UserPresenter" />
+        <variable
+            name="UserInfo"
+            type="User" />
+        <variable
+            name="GoodsInfo"
+            type="Goods" />
+        <variable
+            name="GoodsHandlerInfo"
+            type="GoodsHandler" />
+        <variable
+            name="UserPresenterInfo"
+            type="UserPresenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:onClick="@{() -> UserPresenterInfo.onUserNameClick(UserInfo)}"
+            android:text="@{UserInfo.name,default=userName}" />
+
+        <TextView
+            android:id="@+id/tv_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:text="@{UserInfo.password,default=password}" />
+
+        <TextView
+            android:id="@+id/tv_goods_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:text="@{GoodsInfo.name}" />
+
+        <TextView
+            android:id="@+id/tv_goods_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:text="@{GoodsInfo.details}" />
+
+        <TextView
+            android:id="@+id/tv_goods_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:text="@{String.valueOf(GoodsInfo.price)}" />
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:onClick="@{()->GoodsHandlerInfo.changeGoodsName()}"
+            android:text="改变属性 name 和 price"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:onClick="@{()->GoodsHandlerInfo.changeGoodsDetails()}"
+            android:text="改变属性 details 和 price"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</layout>
